@@ -9,14 +9,12 @@ public class CanvasHandler : MonoBehaviour
     public Text score;
     private GameManager gm;
     public GameObject gameOverGO,bonusBtn,gameWonGo;
-    private UnityAds ads;
-    private AdMob adMob;
+    private AdManager ads;
 
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
-        ads = FindObjectOfType<UnityAds>();
-        adMob = FindObjectOfType<AdMob>();
+        ads = FindObjectOfType<AdManager>();
     }
 
     private void Update()
@@ -24,7 +22,7 @@ public class CanvasHandler : MonoBehaviour
         score.text = "Score: " + gm.GetScore().ToString();
 
         //deactivates the reward ad button
-        bonusBtn.SetActive(adMob.GetPaddleBonus());
+        bonusBtn.SetActive(ads.GetPaddleBonus());
 
         //Will set the canvas buttons to display
         if (gm.GetCurrentState() == GameManager.GameStates.PAUSED || gm.GetCurrentState() == GameManager.GameStates.OVER)

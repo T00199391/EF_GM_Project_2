@@ -169,8 +169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 213972136}
-  - component: {fileID: 213972137}
-  - component: {fileID: 213972138}
+  - component: {fileID: 213972139}
   m_Layer: 0
   m_Name: AdsManager
   m_TagString: Untagged
@@ -192,19 +191,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &213972137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 213972135}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 263ead79ef7cfe54fb08935ca0cb1487, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &213972138
+--- !u!114 &213972139
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,7 +200,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 213972135}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8d9a0399292dd84da186590dd620b19, type: 3}
+  m_Script: {fileID: 11500000, guid: 07a93c5bd94a5454c9a1f233508f4a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &243945966
@@ -753,9 +740,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 213972138}
-        m_TargetAssemblyTypeName: AdMob, Assembly-CSharp
-        m_MethodName: UserChoseToWatchAd
+      - m_Target: {fileID: 213972139}
+        m_TargetAssemblyTypeName: AdManager, Assembly-CSharp
+        m_MethodName: DisplayReward
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

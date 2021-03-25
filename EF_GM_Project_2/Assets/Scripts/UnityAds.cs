@@ -14,7 +14,6 @@ public class UnityAds : MonoBehaviour, IUnityAdsListener
     string placement_Interstitial = "Interstitia_Ad";
 
     public static UnityAds adsManager;
-    private GameManager gm;
     private PaddleHandler paddle;
     private bool paddleBonus;
 
@@ -30,8 +29,7 @@ public class UnityAds : MonoBehaviour, IUnityAdsListener
     {
         Advertisement.AddListener(this);
         Advertisement.Initialize(gameId, testMode);
-        StartCoroutine(ShowBannerWhenReady());
-        gm = FindObjectOfType<GameManager>();
+        //StartCoroutine(ShowBannerWhenReady());
         paddle = FindObjectOfType<PaddleHandler>();
         paddleBonus = true;
     }
@@ -65,6 +63,11 @@ public class UnityAds : MonoBehaviour, IUnityAdsListener
         {
             Debug.Log("Rewarded video is not ready at the moment! Please try again later!");
         }
+    }
+
+    public void ShowBanner()
+    {
+        StartCoroutine(ShowBannerWhenReady());
     }
 
     //Shows the banner ad at the botton the screen
