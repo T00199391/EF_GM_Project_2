@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private bool gameRunning = false, gameOver = false, paddleBonus = false, pauseGame = false, gameWon = false;
     private int score = 0, levelNumber = 1;
     private AdsManager ad = new AdsManager();
     private BlockHandler[] blocks;
@@ -13,6 +12,7 @@ public class GameManager : MonoBehaviour
     private Object currentLevel;
     private string levelName;
     public enum GameStates { NONE, RUNNING, PAUSED, OVER, WON }
+    private GameStates currentState = GameStates.NONE;
 
     private void Start()
     {
@@ -22,6 +22,11 @@ public class GameManager : MonoBehaviour
         if (PlayerPrefs.GetInt("LevelNumber") == 0)
             PlayerPrefs.SetInt("LevelNumber", 1);
 
+        if (PlayerPrefs.GetString("LevelName").Equals(""))
+            levelName = "level1";
+        else
+            levelName = PlayerPrefs.GetString("LevelName");
+
         blocks = FindObjectsOfType<BlockHandler>();
         DontDestroyOnLoad(gameObject);
     }
@@ -30,7 +35,7 @@ public class GameManager : MonoBehaviour
     {
         blocks = FindObjectsOfType<BlockHandler>();
 
-        if (blocks.Length == 0 && gameRunning)
+        if (blocks.Length == 0 && currentState == GameStates.RUNNING)
             SetGameWon();
 
         ball = FindObjectOfType<BallHandler>();
@@ -38,25 +43,9 @@ public class GameManager : MonoBehaviour
     }
 
     #region setters
-    public void StartGame()
-    {
-        gameRunning = true;
-    }
-
-    public void SetGameRunning()
-    {
-        gameRunning = !gameRunning;
-    }
-
     public void SetScore()
     {
         score += 100;
-    }
-
-    public void SetGameOver()
-    {
-        gameOver = true;
-        ad.ShowInterstial();
     }
 
     public void SetLevelName(string name)
@@ -68,76 +57,69 @@ public class GameManager : MonoBehaviour
     {
         if (GameObject.FindWithTag("Level"))
         {
-            DestroyObject(GameObject.FindWithTag("Level"));
+            Destroy(GameObject.FindWithTag("Level"));
         }
         currentLevel = Resources.Load("Prefabs/Levels/" + levelName);
         Instantiate(currentLevel, parent);
     }
 
-    public void SetPaddleBonus()
+    public void SetLevelNumber()
     {
-        paddleBonus = true;
+        for(int i = 0; i < levelName.Length; i++)
+        {
+            if(levelName[i] >= '1' && levelName[i] <= '4')
+            {
+                if (levelNumber < levelName[i] + 1)
+                    levelNumber++;
+            }
+        }
+    }
+
+    public void StartGame()
+    {
+        currentState = GameStates.RUNNING;
+    }
+
+    public void SetGameOver()
+    {
+        currentState = GameStates.OVER;
+        ad.ShowInterstial();
     }
 
     public void SetPauseGame()
     {
-        pauseGame = !pauseGame;
+        if (currentState != GameStates.PAUSED)
+            currentState = GameStates.PAUSED;
+        else
+            currentState = GameStates.RUNNING;
     }
 
     public void SetGameWon()
     {
-        gameWon = true;
-    }
-
-    public void SetLevelNumber()
-    {
-        levelNumber++;
+        currentState = GameStates.WON;
     }
     #endregion
 
     #region getters
-    public bool GetGameRunning()
-    {
-        return gameRunning;
-    }
-
     public int GetScore()
     {
         return score;
-    }
-
-    public bool GetGameOver()
-    {
-        return gameOver;
-    }
-
-    public bool GetPaddleBonus()
-    {
-        return paddleBonus;
-    }
-
-    public bool GetPauseGame()
-    {
-        return pauseGame;
-    }
-
-    public bool GetGameWon()
-    {
-        return gameWon;
     }
 
     public int GetLevelNumber()
     {
         return levelNumber;
     }
+
+    public GameStates GetCurrentState()
+    {
+        return currentState;
+    }
     #endregion
 
     public void ResetVariables()
     {
-        gameOver = false;
-        gameRunning = false;
-        gameWon = false;
-        paddleBonus = false;
+        currentState = GameStates.NONE;
         score = 0;
     }
 

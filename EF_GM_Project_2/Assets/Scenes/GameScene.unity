@@ -1722,18 +1722,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 489623491}
-        m_TargetAssemblyTypeName: LevelHandler, Assembly-CSharp
-        m_MethodName: RestartLevel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &2033764855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1921,7 +1909,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3724314574815927941, guid: 767844bd9ca802341aabf1c21f769480, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.27
+      value: 0.36
       objectReference: {fileID: 0}
     - target: {fileID: 3724314574815927941, guid: 767844bd9ca802341aabf1c21f769480, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1929,15 +1917,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3724314574815927941, guid: 767844bd9ca802341aabf1c21f769480, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.999962
+      value: 0.99984777
       objectReference: {fileID: 0}
     - target: {fileID: 3724314574815927941, guid: 767844bd9ca802341aabf1c21f769480, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.008726465
+      value: -0.01745245
       objectReference: {fileID: 0}
     - target: {fileID: 3724314574815927941, guid: 767844bd9ca802341aabf1c21f769480, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -1
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 3724314574835090114, guid: 767844bd9ca802341aabf1c21f769480, type: 3}
       propertyPath: m_RootOrder
@@ -1993,7 +1981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3724314575790799042, guid: 767844bd9ca802341aabf1c21f769480, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.25
+      value: 5.13
       objectReference: {fileID: 0}
     - target: {fileID: 3724314575790799042, guid: 767844bd9ca802341aabf1c21f769480, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2001,15 +1989,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3724314575790799042, guid: 767844bd9ca802341aabf1c21f769480, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.999962
+      value: 0.99984777
       objectReference: {fileID: 0}
     - target: {fileID: 3724314575790799042, guid: 767844bd9ca802341aabf1c21f769480, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.008726558
+      value: 0.01745245
       objectReference: {fileID: 0}
     - target: {fileID: 3724314575790799042, guid: 767844bd9ca802341aabf1c21f769480, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3724314575958398554, guid: 767844bd9ca802341aabf1c21f769480, type: 3}
       propertyPath: m_IsTrigger

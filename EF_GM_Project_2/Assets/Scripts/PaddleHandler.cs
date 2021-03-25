@@ -28,6 +28,6 @@ public class PaddleHandler : MonoBehaviour
     //Will increase the paddle size when the user finishes the reward ad
     public void Reward()
     {
-        transform.localScale += new Vector3(0.07f, 0, 0);
+        transform.localScale = new Vector3(0.14f, 0.03f, 1);
     }
 }

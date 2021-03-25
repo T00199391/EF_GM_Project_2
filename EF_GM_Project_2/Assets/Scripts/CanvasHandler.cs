@@ -9,10 +9,12 @@ public class CanvasHandler : MonoBehaviour
     public Text score;
     private GameManager gm;
     public GameObject gameOverGO,bonusBtn,gameWonGo;
+    private AdsManager ads;
 
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
+        ads = FindObjectOfType<AdsManager>();
     }
 
     private void Update()
@@ -20,24 +22,25 @@ public class CanvasHandler : MonoBehaviour
         score.text = "Score: " + gm.GetScore().ToString();
 
         //deactivates the reward ad button
-        if (gm.GetPaddleBonus())
-        {
-            bonusBtn.SetActive(false);
-        }
+        bonusBtn.SetActive(ads.GetPaddleBonus());
 
         //Will set the canvas buttons to display
-        if (gm.GetPauseGame() || gm.GetGameOver())
+        if (gm.GetCurrentState() == GameManager.GameStates.PAUSED || gm.GetCurrentState() == GameManager.GameStates.OVER)
             gameOverGO.SetActive(true);
         else
             gameOverGO.SetActive(false);
 
-        gameWonGo.SetActive(gm.GetGameWon());
+        if(gm.GetCurrentState() == GameManager.GameStates.WON)
+            gameWonGo.SetActive(true);
+        else
+            gameWonGo.SetActive(false);
     }
 
     //Will load the menu scene
     public void LoadMenu()
     {
         SceneManager.LoadScene(0);
+        gm.ResetVariables();
     }
 
     //Will load the level select scene

@@ -13,18 +13,16 @@ public class MenuHandler : MonoBehaviour
         gm = FindObjectOfType<GameManager>();
     }
 
-    //Sets the menu or level select scene
-    public void SetMenus()
+    //Sets the menu scene
+    public void LoadMenu()
     {
-        if(SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            SceneManager.LoadScene(1);
-        }
-            
-        if (SceneManager.GetActiveScene().buildIndex == 1)
-        {
-            SceneManager.LoadScene(0);
-        }
+        SceneManager.LoadScene(0);
+    }
+
+    //Sets the level select scene
+    public void LoadLevel()
+    {
+        SceneManager.LoadScene(1);
     }
 
     //Will load the game scene

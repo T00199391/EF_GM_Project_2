@@ -17,13 +17,18 @@ public class BallHandler : MonoBehaviour
         vel = new Vector2(0, 4);
     }
 
+    void Update()
+    {
+        if (gm.GetCurrentState() == GameManager.GameStates.WON || gm.GetCurrentState() == GameManager.GameStates.OVER)
+            rb.velocity = new Vector2(0, 0);
+    }
+
     //Will end the game when the ball hits the bottom of the screen
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Bottom"))
         {
             gm.SetGameOver();
-            gm.SetGameRunning();
         }
     }
 
@@ -38,7 +43,7 @@ public class BallHandler : MonoBehaviour
     {
         gm.SetPauseGame();
 
-        if(gm.GetPauseGame())
+        if (gm.GetCurrentState() == GameManager.GameStates.PAUSED)
         {
             vel = rb.velocity;
             rb.velocity = new Vector2(0,0);

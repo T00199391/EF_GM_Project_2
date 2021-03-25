@@ -16,6 +16,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     public static AdsManager adsManager;
     private GameManager gm;
     private PaddleHandler paddle;
+    private bool paddleBonus;
 
     private void Awake()
     {
@@ -32,6 +33,12 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
         StartCoroutine(ShowBannerWhenReady());
         gm = FindObjectOfType<GameManager>();
         paddle = FindObjectOfType<PaddleHandler>();
+        paddleBonus = true;
+    }
+
+    public bool GetPaddleBonus()
+    {
+        return paddleBonus;
     }
 
     //Display the reward ad
@@ -77,7 +84,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
         if (showResult == ShowResult.Finished)
         {
             paddle.Reward();
-            gm.SetPaddleBonus();
+            paddleBonus = false;
         }
     }
 
