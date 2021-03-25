@@ -5,7 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private int score = 0, levelNumber = 1;
-    private AdsManager ad = new AdsManager();
+    private UnityAds ad = new UnityAds();
+    private AdMob adMob = new AdMob();
     private BlockHandler[] blocks;
     private BallHandler ball;
     private PaddleHandler paddle;
@@ -83,7 +84,8 @@ public class GameManager : MonoBehaviour
     public void SetGameOver()
     {
         currentState = GameStates.OVER;
-        ad.ShowInterstial();
+        //ad.ShowInterstial();
+        adMob.GameOver();
     }
 
     public void SetPauseGame()

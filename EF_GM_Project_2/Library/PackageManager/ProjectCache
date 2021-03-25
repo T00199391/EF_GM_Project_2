@@ -5,15 +5,15 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637521965340705091
-    m_Hash: 2264124990
+      ticks: 637522642305375094
+    m_Hash: 4252236710
   m_LockFileStatus:
     m_FilePath: B:/4th Year/EF_GM_Project_2/EF_GM_Project_2/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637521966444906669
+      ticks: 637522642764099114
     m_Hash: 1257741279
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -623,6 +623,7 @@ m_PackageAssets:
         - 3.5.0
         - 3.5.2
         - 3.6.1
+        - 3.7.0
         compatible:
         - 0.0.3
         - 0.0.4
@@ -661,6 +662,7 @@ m_PackageAssets:
         - 3.5.0
         - 3.5.2
         - 3.6.1
+        - 3.7.0
         verified: 3.5.2
       dependencies:
       - name: com.unity.ugui
