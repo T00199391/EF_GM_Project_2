@@ -53,12 +53,12 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
                 this.interstitial.Destroy();
                 ibanner = false;
             }
-            ShowBannerWhenReady();
+            StartCoroutine(ShowBannerWhenReady());
             ubanner = true;
         }
         else
         {
-            if(ubanner)
+            if (ubanner)
             {
                 Advertisement.Banner.Hide(true);
                 ubanner = false;

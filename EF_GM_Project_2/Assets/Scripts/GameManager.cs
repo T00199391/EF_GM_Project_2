@@ -13,19 +13,23 @@ public class GameManager : MonoBehaviour
     private string levelName;
     public enum GameStates { NONE, RUNNING, PAUSED, OVER, WON }
     private GameStates currentState = GameStates.NONE;
+    private float gameTimer = 0.0f;
+    FileHandler fileHandler = new FileHandler();
 
     private void Start()
     {
-        if (PlayerPrefs.GetInt("LevelNumber") > 1)
-            levelNumber = PlayerPrefs.GetInt("LevelNumber");
+        string[] gameUserData = fileHandler.ReadTextFromFile();
 
-        if (PlayerPrefs.GetInt("LevelNumber") == 0)
-            PlayerPrefs.SetInt("LevelNumber", 1);
-
-        if (PlayerPrefs.GetString("LevelName").Equals(""))
-            levelName = "level1";
+        if(gameUserData.Length == 0 || gameUserData == null)
+        {
+            levelNumber = 1;
+            levelName = "Level1";
+        }
         else
-            levelName = PlayerPrefs.GetString("LevelName");
+        {
+            levelNumber = gameUserData[0][0];
+            levelName = gameUserData[1];
+        }
 
         blocks = FindObjectsOfType<BlockHandler>();
         DontDestroyOnLoad(gameObject);
@@ -35,17 +39,28 @@ public class GameManager : MonoBehaviour
     {
         blocks = FindObjectsOfType<BlockHandler>();
 
+        //if there are no blocks in the game scene during the game running then the end game method will be called
         if (blocks.Length == 0 && currentState == GameStates.RUNNING)
             SetGameWon();
 
         ball = FindObjectOfType<BallHandler>();
         paddle = FindObjectOfType<PaddleHandler>();
+
+        if(currentState == GameStates.RUNNING)
+            gameTimer += Time.deltaTime;
     }
 
     #region setters
+    //Sets the score fo rthe user when they destroy a block
+    //The score will be determined by the amount time taken by the user to complete the level
     public void SetScore()
     {
-        score += 100;
+        if (gameTimer <= 30)
+            score += 100;
+        else if (gameTimer > 30 && gameTimer < 60)
+            score += 70;
+        else
+            score += 40;
     }
 
     public void SetLevelName(string name)
@@ -53,7 +68,8 @@ public class GameManager : MonoBehaviour
         levelName = name;
     }
 
-    public void SetLevel(Transform parent)
+    //Sets the level design based on the level name saved
+    public void SetLevelDesign(Transform parent)
     {
         if (GameObject.FindWithTag("Level"))
         {
@@ -63,15 +79,29 @@ public class GameManager : MonoBehaviour
         Instantiate(currentLevel, parent);
     }
 
+    //sets the next level name after the user complets a level
+    public void SetLevelName()
+    {
+        if (levelName.Equals("Level1"))
+            levelName = "Level2";
+        else if (levelName.Equals("Level2"))
+            levelName = "Level3";
+        else if (levelName.Equals("Level3"))
+            levelName = "Level4";
+        else if (levelName.Equals("Level4"))
+            levelName = "Level5";
+        else
+            levelName = "";
+    }
+
+    //Sets the level number to be the next level
     public void SetLevelNumber()
     {
-        for(int i = 0; i < levelName.Length; i++)
+        int nextLevel = (int)System.Char.GetNumericValue(levelName[5]) + 1;
+
+        if (levelNumber < nextLevel)
         {
-            if(levelName[i] >= '1' && levelName[i] <= '4')
-            {
-                if (levelNumber < levelName[i] + 1)
-                    levelNumber++;
-            }
+            levelNumber = nextLevel;
         }
     }
 
@@ -111,6 +141,11 @@ public class GameManager : MonoBehaviour
         return levelNumber;
     }
 
+    public string GetLevelName()
+    {
+        return levelName;
+    }
+
     public GameStates GetCurrentState()
     {
         return currentState;
@@ -121,12 +156,15 @@ public class GameManager : MonoBehaviour
     {
         currentState = GameStates.NONE;
         score = 0;
+        gameTimer = 0;
     }
 
     public void SaveData()
     {
+        Debug.Log(levelName + "  " + levelNumber);
         SetLevelNumber();
-        PlayerPrefs.SetInt("LevelNumber", GetLevelNumber());
-        PlayerPrefs.Save();
+        SetLevelName();
+        Debug.Log(levelName + "  " + levelNumber);
+        fileHandler.AddTextToFile(GetLevelNumber().ToString(), GetLevelName().ToString());
     }
 }

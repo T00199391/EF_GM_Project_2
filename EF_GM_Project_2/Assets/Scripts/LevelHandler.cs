@@ -10,13 +10,13 @@ public class LevelHandler : MonoBehaviour
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
-        gm.SetLevel(transform);
+        gm.SetLevelDesign(transform);
     }
 
     //Resets the level to the beginning
     public void RestartLevel()
     {
-        gm.SetLevel(transform);
+        gm.SetLevelDesign(transform);
         SceneManager.LoadScene(2);
         gm.ResetVariables();
     }
