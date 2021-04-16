@@ -14,22 +14,17 @@ public class GameManager : MonoBehaviour
     public enum GameStates { NONE, RUNNING, PAUSED, OVER, WON }
     private GameStates currentState = GameStates.NONE;
     private float gameTimer = 0.0f;
-    FileHandler fileHandler = new FileHandler();
+    FileHandler fileHandler;
+    string[] gameUserData;
 
     private void Start()
     {
-        string[] gameUserData = fileHandler.ReadTextFromFile();
+        fileHandler = new FileHandler();
+        fileHandler.ReadTextFromFile();
 
-        if(gameUserData.Length == 0 || gameUserData == null)
-        {
-            levelNumber = 1;
-            levelName = "Level1";
-        }
-        else
-        {
-            levelNumber = gameUserData[0][0];
-            levelName = gameUserData[1];
-        }
+        levelNumber = fileHandler.GetLvNum();
+        levelName = fileHandler.GetLvName();
+        Debug.Log(levelNumber + "  " + levelName);
 
         blocks = FindObjectsOfType<BlockHandler>();
         DontDestroyOnLoad(gameObject);

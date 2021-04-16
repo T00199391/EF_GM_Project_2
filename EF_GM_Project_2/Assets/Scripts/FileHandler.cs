@@ -5,30 +5,62 @@ using System;
 
 public class FileHandler : MonoBehaviour
 {
-    public void AddTextToFile(string levelNumber,string levelName)
+    string lvName = "Level1";
+    int lvNum = 1;
+
+    void Start()
     {
         if (!File.Exists(Application.persistentDataPath + "/GameData.csv"))
         {
             File.CreateText(Application.persistentDataPath + "/GameData.csv");
         }
+    }
 
+    private void SetLvName(string name)
+    {
+        lvName = name;
+    }
+
+    private void SetLvNum(int num)
+    {
+        lvNum = num;
+    }
+
+    public string GetLvName()
+    {
+        return lvName;
+    }
+
+    public int GetLvNum()
+    {
+        return lvNum;
+    }
+
+    public void AddTextToFile(string levelNumber,string levelName)
+    {
         File.WriteAllText(Application.persistentDataPath + "/GameData.csv", levelNumber + "," + levelName + ",");
     }
 
-    public string[] ReadTextFromFile()
+    public void ReadTextFromFile()
     {
         StreamReader reader = null;
         string[] gameValues = null;
-        if (File.Exists(Application.persistentDataPath + "/GameData.csv"))
+        try
         {
-            reader = new StreamReader(File.OpenRead(Application.persistentDataPath + "/GameData.csv"));
-            while (!reader.EndOfStream)
+            if (File.Exists(Application.persistentDataPath + "/GameData.csv"))
             {
-                var line = reader.ReadLine();
-                gameValues = line.Split(',');
-            }
-        }
+                reader = new StreamReader(File.OpenRead(Application.persistentDataPath + "/GameData.csv"));
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    gameValues = line.Split(',');
+                }
 
-        return gameValues;
+                SetLvName(gameValues[0]);
+                SetLvNum((int)System.Char.GetNumericValue(gameValues[1][0]));
+            }
+        }catch(Exception e){
+            Debug.Log(e);
+        }
     }
 }
