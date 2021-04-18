@@ -8,6 +8,9 @@ TagManager:
   - Bottom
   - Level
   - LevelButton
+  - Barrel
+  - Top
+  - Block
   layers:
   - Default
   - TransparentFX

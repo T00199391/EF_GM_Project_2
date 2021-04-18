@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     private float gameTimer = 0.0f;
     FileHandler fileHandler;
     string[] gameUserData;
+    private bool powerUpActive = false;
 
     private void Start()
     {
@@ -47,15 +48,27 @@ public class GameManager : MonoBehaviour
 
     #region setters
     //Sets the score fo rthe user when they destroy a block
-    //The score will be determined by the amount time taken by the user to complete the level
-    public void SetScore()
+    //The score will be determined by the amount time taken by the user to complete the level and what destroyed the block
+    public void SetScore(string type)
     {
-        if (gameTimer <= 30)
-            score += 100;
-        else if (gameTimer > 30 && gameTimer < 60)
-            score += 70;
+        if (type.Equals("Ball"))
+        {
+            if (gameTimer <= 30)
+                score += 100;
+            else if (gameTimer > 30 && gameTimer < 60)
+                score += 70;
+            else
+                score += 40;
+        }
         else
-            score += 40;
+        {
+            if (gameTimer <= 30)
+                score += 80;
+            else if (gameTimer > 30 && gameTimer < 60)
+                score += 50;
+            else
+                score += 20;
+        }
     }
 
     public void SetLevelName(string name)
@@ -123,6 +136,11 @@ public class GameManager : MonoBehaviour
     {
         currentState = GameStates.WON;
     }
+
+    public void SetPowerUpActive(bool pua)
+    {
+        powerUpActive = pua;
+    }
     #endregion
 
     #region getters
@@ -145,6 +163,11 @@ public class GameManager : MonoBehaviour
     {
         return currentState;
     }
+
+    public bool GetPowerUpActive()
+    {
+        return powerUpActive;
+    }
     #endregion
 
     public void ResetVariables()
@@ -152,6 +175,7 @@ public class GameManager : MonoBehaviour
         currentState = GameStates.NONE;
         score = 0;
         gameTimer = 0;
+        powerUpActive = false;
     }
 
     public void SaveData()

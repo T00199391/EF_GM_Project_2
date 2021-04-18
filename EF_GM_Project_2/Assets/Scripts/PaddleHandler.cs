@@ -5,6 +5,8 @@ using UnityEngine;
 public class PaddleHandler : MonoBehaviour
 {
     private GameManager gm;
+    public GameObject lazer1, lazer2;
+    private float timer = 0;
 
     void Start()
     {
@@ -22,6 +24,26 @@ public class PaddleHandler : MonoBehaviour
 
                 transform.position = new Vector3(pos.x, transform.position.y, 0);
             }
+        }
+
+        if(gm.GetPowerUpActive() && timer <= 5)
+        {
+            timer += Time.deltaTime;
+            if(!lazer1.GetComponent<LazerHandler>())
+            {
+                lazer1.AddComponent<LazerHandler>();
+                lazer2.AddComponent<LazerHandler>();
+            }
+        }
+        else
+        {
+            if (lazer1.GetComponent<LazerHandler>())
+            {
+                lazer1.GetComponent<LazerHandler>().DestroyComponment();
+                lazer2.GetComponent<LazerHandler>().DestroyComponment();
+            }
+            timer = 0;
+            gm.SetPowerUpActive(false);
         }
     }
 
