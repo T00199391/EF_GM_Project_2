@@ -17,8 +17,6 @@ ScriptsOnlyBuild:
     - ReporterMessageReceiver
     GoogleMobileAds.Editor.dll:
     - GoogleMobileAds.Editor.GoogleMobileAdsSettings
-    GoogleMobileAds.dll:
-    - GoogleMobileAds.Common.MobileAdsEventExecutor
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:
@@ -33,9 +31,6 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
-    UnityEngine.Advertisements.dll:
-    - UnityEngine.Advertisements.Placeholder
-    - UnityEngine.Advertisements.Platform.Editor.BannerPlaceholder
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -75,33 +70,33 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 778}
     - Class: 114
-      Script: {instanceID: 12350}
+      Script: {instanceID: 11978}
     - Class: 114
-      Script: {instanceID: 12442}
+      Script: {instanceID: 12008}
     - Class: 114
-      Script: {instanceID: 12482}
+      Script: {instanceID: 12100}
     - Class: 114
-      Script: {instanceID: 12708}
+      Script: {instanceID: 12144}
     - Class: 114
-      Script: {instanceID: 12766}
+      Script: {instanceID: 12374}
     - Class: 114
-      Script: {instanceID: 13162}
+      Script: {instanceID: 12434}
     - Class: 114
-      Script: {instanceID: 13318}
+      Script: {instanceID: 12848}
     - Class: 114
-      Script: {instanceID: 13366}
+      Script: {instanceID: 13008}
     - Class: 114
-      Script: {instanceID: 13562}
+      Script: {instanceID: 13056}
     - Class: 114
-      Script: {instanceID: 14460}
+      Script: {instanceID: 13254}
     - Class: 114
-      Script: {instanceID: 15124}
+      Script: {instanceID: 14892}
     - Class: 114
-      Script: {instanceID: 15198}
+      Script: {instanceID: 14968}
     - Class: 114
-      Script: {instanceID: 15366}
+      Script: {instanceID: 15144}
     - Class: 114
-      Script: {instanceID: 16100}
+      Script: {instanceID: 15908}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -140,27 +135,27 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 778}
     - Class: 114
-      Script: {instanceID: 12350}
+      Script: {instanceID: 11978}
     - Class: 114
-      Script: {instanceID: 12442}
+      Script: {instanceID: 12008}
     - Class: 114
-      Script: {instanceID: 12708}
+      Script: {instanceID: 12100}
     - Class: 114
-      Script: {instanceID: 12766}
+      Script: {instanceID: 12374}
     - Class: 114
-      Script: {instanceID: 13366}
+      Script: {instanceID: 12434}
     - Class: 114
-      Script: {instanceID: 13562}
+      Script: {instanceID: 13056}
     - Class: 114
-      Script: {instanceID: 13996}
+      Script: {instanceID: 13254}
     - Class: 114
-      Script: {instanceID: 14460}
+      Script: {instanceID: 13706}
     - Class: 114
-      Script: {instanceID: 14812}
+      Script: {instanceID: 14570}
     - Class: 114
-      Script: {instanceID: 15366}
+      Script: {instanceID: 15144}
     - Class: 114
-      Script: {instanceID: 16100}
+      Script: {instanceID: 15908}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -209,41 +204,41 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 778}
     - Class: 114
-      Script: {instanceID: 12350}
+      Script: {instanceID: 11978}
     - Class: 114
-      Script: {instanceID: 12442}
+      Script: {instanceID: 12008}
     - Class: 114
-      Script: {instanceID: 12482}
+      Script: {instanceID: 12100}
     - Class: 114
-      Script: {instanceID: 12708}
+      Script: {instanceID: 12144}
     - Class: 114
-      Script: {instanceID: 12766}
+      Script: {instanceID: 12374}
     - Class: 114
-      Script: {instanceID: 13162}
+      Script: {instanceID: 12434}
     - Class: 114
-      Script: {instanceID: 13366}
+      Script: {instanceID: 12848}
     - Class: 114
-      Script: {instanceID: 13562}
+      Script: {instanceID: 13006}
     - Class: 114
-      Script: {instanceID: 13656}
+      Script: {instanceID: 13056}
     - Class: 114
-      Script: {instanceID: 13996}
+      Script: {instanceID: 13254}
     - Class: 114
-      Script: {instanceID: 14378}
+      Script: {instanceID: 13350}
     - Class: 114
-      Script: {instanceID: 14460}
+      Script: {instanceID: 13706}
     - Class: 114
-      Script: {instanceID: 14552}
+      Script: {instanceID: 14108}
     - Class: 114
-      Script: {instanceID: 15366}
+      Script: {instanceID: 14168}
     - Class: 114
-      Script: {instanceID: 16100}
+      Script: {instanceID: 14290}
     - Class: 114
-      Script: {instanceID: 24294}
+      Script: {instanceID: 14388}
     - Class: 114
-      Script: {instanceID: 24296}
+      Script: {instanceID: 15144}
     - Class: 114
-      Script: {instanceID: 24298}
+      Script: {instanceID: 15908}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -263,6 +258,12 @@ ScriptsOnlyBuild:
     - Class: 224
       Script: {instanceID: 0}
   scriptHashData:
+  - hash:
+      serializedVersion: 2
+      Hash: f087c23fbfa15475a0d110af46fb0496
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Button
   - hash:
       serializedVersion: 2
       Hash: 5d694fb001503417d2bb4a27eeab8ac5
@@ -490,6 +491,12 @@ ScriptsOnlyBuild:
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
+    className: LazerHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
     className: LevelHandler
   - hash:
       serializedVersion: 2
@@ -568,12 +575,6 @@ ScriptsOnlyBuild:
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: FileHandler
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
     className: MenuHandler
   - hash:
       serializedVersion: 2
@@ -631,10 +632,10 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: f087c23fbfa15475a0d110af46fb0496
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Button
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PowerUpHandler
   - hash:
       serializedVersion: 2
       Hash: c1d728126ff1918728036c59106d32b2
@@ -653,6 +654,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: VerticalLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ProjectileHandler
   - hash:
       serializedVersion: 2
       Hash: 71b711096c6c32621c1d4c02310898b7
@@ -893,24 +900,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: LazerHandler
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PowerUpHandler
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ProjectileHandler
   platform: 13
   scenePathNames:
   - Assets/Scenes/MainMenu.unity

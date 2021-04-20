@@ -14,18 +14,30 @@ public class GameManager : MonoBehaviour
     public enum GameStates { NONE, RUNNING, PAUSED, OVER, WON }
     private GameStates currentState = GameStates.NONE;
     private float gameTimer = 0.0f;
-    FileHandler fileHandler;
     string[] gameUserData;
     private bool powerUpActive = false;
 
     private void Start()
     {
-        fileHandler = new FileHandler();
-        fileHandler.ReadTextFromFile();
+        if (PlayerPrefs.GetInt("LevelsComplete") == 0)
+        {
+            PlayerPrefs.SetInt("LevelsComplete", 1);
+            levelNumber = PlayerPrefs.GetInt("LevelsComplete");
+        }
+        else
+        {
+            levelNumber = PlayerPrefs.GetInt("LevelsComplete");
+        }
 
-        levelNumber = fileHandler.GetLvNum();
-        levelName = fileHandler.GetLvName();
-        Debug.Log(levelNumber + "  " + levelName);
+        if(PlayerPrefs.GetString("CurrentLevel").Equals("") || PlayerPrefs.GetString("CurrentLevel") == null)
+        {
+            PlayerPrefs.SetString("CurrentLevel", "Level1");
+            levelName = PlayerPrefs.GetString("CurrentLevel");
+        }
+        else
+        {
+            levelName = PlayerPrefs.GetString("CurrentLevel");
+        }
 
         blocks = FindObjectsOfType<BlockHandler>();
         DontDestroyOnLoad(gameObject);
@@ -180,10 +192,12 @@ public class GameManager : MonoBehaviour
 
     public void SaveData()
     {
-        Debug.Log(levelName + "  " + levelNumber);
         SetLevelNumber();
         SetLevelName();
-        Debug.Log(levelName + "  " + levelNumber);
-        fileHandler.AddTextToFile(GetLevelNumber().ToString(), GetLevelName().ToString());
+        if (GetLevelNumber() > PlayerPrefs.GetInt("LevelsComplete"))
+        {
+            PlayerPrefs.SetInt("LevelsComplete", GetLevelNumber());
+            PlayerPrefs.SetString("CurrentLevel", GetLevelName());
+        }
     }
 }

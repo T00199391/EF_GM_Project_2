@@ -1,0 +1,2 @@
+B:\4th Year\EF_GM_Project_2\EF_GM_Project_2\obj\Debug\Assembly-CSharp-Editor.csprojAssemblyReference.cache
+B:\4th Year\EF_GM_Project_2\EF_GM_Project_2\obj\Debug\Assembly-CSharp-Editor.csproj.CoreCompileInputs.cache
