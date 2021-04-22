@@ -17,7 +17,7 @@ public class BlockHandler : MonoBehaviour
         if(collision.gameObject.GetComponent<BallHandler>())
         {
             int chance = Random.Range(0, 101);
-            if (chance <= 30)
+            if (chance <= 20)
             {
                 Object prefab = Resources.Load("Prefabs/PowerUps/PowerUp");
                 Instantiate(prefab, transform.position, Quaternion.identity);

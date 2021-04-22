@@ -11,7 +11,7 @@ public class LazerHandler : MonoBehaviour
     {
         gm = FindObjectOfType<GameManager>();
         barrel = gameObject.transform.GetChild(0).gameObject;
-        InvokeRepeating("InstantiateProjectile", 0f, 1f);
+        InvokeRepeating("InstantiateProjectile", 0f, 0.5f);
     }
 
     private void InstantiateProjectile()

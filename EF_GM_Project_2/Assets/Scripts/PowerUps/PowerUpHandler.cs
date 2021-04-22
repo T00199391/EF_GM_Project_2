@@ -13,7 +13,8 @@ public class PowerUpHandler : MonoBehaviour
 
     void Update()
     {
-        transform.position -= new Vector3(0, 1f, 0) * Time.deltaTime;
+        if(gm.GetCurrentState() == GameManager.GameStates.RUNNING)
+            transform.position -= new Vector3(0, 1.3f, 0) * Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

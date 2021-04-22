@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     private BlockHandler[] blocks;
     private BallHandler ball;
     private PaddleHandler paddle;
+    private PlayGameServices services;
     private Object currentLevel;
     private string levelName;
     public enum GameStates { NONE, RUNNING, PAUSED, OVER, WON }
@@ -29,17 +30,8 @@ public class GameManager : MonoBehaviour
             levelNumber = PlayerPrefs.GetInt("LevelsComplete");
         }
 
-        if(PlayerPrefs.GetString("CurrentLevel").Equals("") || PlayerPrefs.GetString("CurrentLevel") == null)
-        {
-            PlayerPrefs.SetString("CurrentLevel", "Level1");
-            levelName = PlayerPrefs.GetString("CurrentLevel");
-        }
-        else
-        {
-            levelName = PlayerPrefs.GetString("CurrentLevel");
-        }
-
         blocks = FindObjectsOfType<BlockHandler>();
+        services = new PlayGameServices();
         DontDestroyOnLoad(gameObject);
     }
 
@@ -97,21 +89,6 @@ public class GameManager : MonoBehaviour
         }
         currentLevel = Resources.Load("Prefabs/Levels/" + levelName);
         Instantiate(currentLevel, parent);
-    }
-
-    //sets the next level name after the user complets a level
-    public void SetLevelName()
-    {
-        if (levelName.Equals("Level1"))
-            levelName = "Level2";
-        else if (levelName.Equals("Level2"))
-            levelName = "Level3";
-        else if (levelName.Equals("Level3"))
-            levelName = "Level4";
-        else if (levelName.Equals("Level4"))
-            levelName = "Level5";
-        else
-            levelName = "";
     }
 
     //Sets the level number to be the next level
@@ -192,12 +169,12 @@ public class GameManager : MonoBehaviour
 
     public void SaveData()
     {
+        services.UploadScore(GetScore(), GetLevelName());
+        //services.AchievementComplete(GetLevelName());
         SetLevelNumber();
-        SetLevelName();
         if (GetLevelNumber() > PlayerPrefs.GetInt("LevelsComplete"))
         {
             PlayerPrefs.SetInt("LevelsComplete", GetLevelNumber());
-            PlayerPrefs.SetString("CurrentLevel", GetLevelName());
         }
     }
 }

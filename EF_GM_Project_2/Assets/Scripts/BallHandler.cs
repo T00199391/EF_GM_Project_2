@@ -41,16 +41,19 @@ public class BallHandler : MonoBehaviour
 
     public void PauseGame()
     {
-        gm.SetPauseGame();
+        if (gm.GetCurrentState() == GameManager.GameStates.RUNNING)
+        {
+            gm.SetPauseGame();
 
-        if (gm.GetCurrentState() == GameManager.GameStates.PAUSED)
-        {
-            vel = rb.velocity;
-            rb.velocity = new Vector2(0,0);
-        }
-        else
-        {
-            Invoke("StartGame", 3);
+            if (gm.GetCurrentState() == GameManager.GameStates.PAUSED)
+            {
+                vel = rb.velocity;
+                rb.velocity = new Vector2(0, 0);
+            }
+            else
+            {
+                StartGame();
+            }
         }
     }
 }
