@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private float gameTimer = 0.0f;
     string[] gameUserData;
     private bool powerUpActive = false;
+    private bool loadData = false;
 
     private void Start()
     {
@@ -31,7 +32,7 @@ public class GameManager : MonoBehaviour
         }
 
         blocks = FindObjectsOfType<BlockHandler>();
-        services = new PlayGameServices();
+        services = FindObjectOfType<PlayGameServices>();
         DontDestroyOnLoad(gameObject);
     }
 
@@ -48,6 +49,12 @@ public class GameManager : MonoBehaviour
 
         if(currentState == GameStates.RUNNING)
             gameTimer += Time.deltaTime;
+
+        if(loadData)
+        {
+            services.OpenSaveToCloud(false);
+            loadData = false;
+        }
     }
 
     #region setters
@@ -102,6 +109,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void LoadLevelNumber(int ln)
+    {
+        levelNumber = ln;
+    }
+
     public void StartGame()
     {
         currentState = GameStates.RUNNING;
@@ -129,6 +141,11 @@ public class GameManager : MonoBehaviour
     public void SetPowerUpActive(bool pua)
     {
         powerUpActive = pua;
+    }
+
+    public void SetLoadData()
+    {
+        loadData = true;
     }
     #endregion
 
@@ -176,5 +193,6 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("LevelsComplete", GetLevelNumber());
         }
+        services.OpenSaveToCloud(true);
     }
 }

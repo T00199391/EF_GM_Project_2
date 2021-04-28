@@ -3,22 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
-using UnityEngine.UI;
+using GooglePlayGames.BasicApi.SavedGame;
+using System;
 
 public class PlayGameServices : MonoBehaviour
 {
+    private GameManager gm;
+    private int currentLevels;
+
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
+        gm = FindObjectOfType<GameManager>();
+        currentLevels = 0;
         Initialize();
+    }
+
+    public int GetCurrentLevels()
+    {
+        return currentLevels;
     }
 
     private void Initialize()
     {
-        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
+        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().EnableSavedGames().Build();
         PlayGamesPlatform.InitializeInstance(config);
         PlayGamesPlatform.Activate();
         Debug.Log("Play games initilised");
-        SignInPlayer();
     }
 
     private string DetermineId(string ln, string type)
@@ -56,20 +67,26 @@ public class PlayGameServices : MonoBehaviour
     }
 
     #region SignIn
-    private void SignInPlayer()
+    public void SignInPlayer()
     {
         PlayGamesPlatform.Instance.Authenticate(SignInInteractivity.CanPromptOnce, (success) =>
-         {
-             switch(success)
-             {
-                 case SignInStatus.Success:
-                     Debug.Log("Sign in player");
-                     break;
-                 default:
-                     Debug.Log("Didn't sign in player");
-                     break;
-             }
-         });
+        {
+            switch (success)
+            {
+                case SignInStatus.Success:
+                    gm.SetLoadData();
+                    Debug.Log("Sign in player");
+                    break;
+                default:
+                    Debug.Log("Didn't sign in player");
+                    break;
+            }
+        });
+    }
+
+    public void PlayerSignOut()
+    {
+        PlayGamesPlatform.Instance.SignOut();
     }
     #endregion
 
@@ -146,6 +163,73 @@ public class PlayGameServices : MonoBehaviour
     public void ShowAchievements()
     {
         Social.ShowAchievementsUI();
+    }
+    #endregion
+
+    #region Save Games
+    private bool issaving = false;
+    private string SAVE_NAME = "savegames";
+
+    public void OpenSaveToCloud(bool saving)
+    {
+        if (Social.localUser.authenticated)
+        {
+            issaving = saving;
+            ((PlayGamesPlatform)Social.Active).SavedGame.OpenWithAutomaticConflictResolution
+                (SAVE_NAME, GooglePlayGames.BasicApi.DataSource.ReadCacheOrNetwork,
+                ConflictResolutionStrategy.UseLongestPlaytime, SavedGameOpen);
+        }
+    }
+
+    private void SavedGameOpen(SavedGameRequestStatus status, ISavedGameMetadata meta)
+    {
+        if (status == SavedGameRequestStatus.Success)
+        {
+            // debugtext.text = "hello in save1";
+            if (issaving)//if is saving is true we are saving our data to cloud
+            {
+                // debugtext.text = "hello in save2";
+                byte[] data = System.Text.ASCIIEncoding.ASCII.GetBytes(GetDataToStoreinCloud());
+                SavedGameMetadataUpdate update = new SavedGameMetadataUpdate.Builder().Build();
+                ((PlayGamesPlatform)Social.Active).SavedGame.CommitUpdate(meta, update, data, SaveUpdate);
+            }
+            else//if is saving is false we are opening our saved data from cloud
+            {
+                ((PlayGamesPlatform)Social.Active).SavedGame.ReadBinaryData(meta, ReadDataFromCloud);
+            }
+        }
+    }
+
+    private void ReadDataFromCloud(SavedGameRequestStatus status, byte[] data)
+    {
+        if (status == SavedGameRequestStatus.Success)
+        {
+            string savedata = System.Text.ASCIIEncoding.ASCII.GetString(data);
+            LoadDataFromCloudToOurGame(savedata);
+        }
+    }
+
+    private void LoadDataFromCloudToOurGame(string savedata)
+    {
+        string[] data = savedata.Split('|');
+        gm.LoadLevelNumber(Convert.ToInt32(data[0]));
+        Debug.Log("Data " + data[0].ToString());
+    }
+
+    private void SaveUpdate(SavedGameRequestStatus status, ISavedGameMetadata meta)
+    {
+        //use this to debug whether the game is uploaded to cloud
+        Debug.Log("successfully add data to cloud");
+    }
+
+    private string GetDataToStoreinCloud()//  we seting the value that we are going to store the data in cloud
+    {
+        string data = "";
+        //data [0]
+        data += gm.GetLevelNumber().ToString();
+        data += "|";
+
+        return data;
     }
     #endregion
 }
