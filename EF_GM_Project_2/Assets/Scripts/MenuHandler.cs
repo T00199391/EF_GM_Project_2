@@ -31,6 +31,11 @@ public class MenuHandler : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
+    public void LoadStore()
+    {
+        SceneManager.LoadScene(3);
+    }
+
     public void SetLevel(string name)
     {
         gm.SetLevelName(name);

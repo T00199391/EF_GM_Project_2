@@ -24,6 +24,7 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
 
     private PaddleHandler paddle;
     private bool paddleBonus, ibanner = false, ubanner = false;
+    private GameManager gm;
 
     private void Awake()
     {
@@ -36,6 +37,7 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
     void Start()
     {
         paddle = FindObjectOfType<PaddleHandler>();
+        gm = FindObjectOfType<GameManager>();
         paddleBonus = true;
 
         Advertisement.AddListener(this);
@@ -208,13 +210,16 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
 
     public void GameOver()
     {
-        if (RandomAd() == 0)
+        if (!gm.GetNoAds())
         {
-            ShowInterstial();
-        }
-        else
-        {
-            this.RequestInterstitial();
+            if (RandomAd() == 0)
+            {
+                ShowInterstial();
+            }
+            else
+            {
+                this.RequestInterstitial();
+            }
         }
     }
 

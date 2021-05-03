@@ -13,10 +13,10 @@ public class PlayGameServices : MonoBehaviour
 
     void Start()
     {
+        Initialize();
         DontDestroyOnLoad(gameObject);
         gm = FindObjectOfType<GameManager>();
         currentLevels = 0;
-        Initialize();
     }
 
     public int GetCurrentLevels()
@@ -26,10 +26,11 @@ public class PlayGameServices : MonoBehaviour
 
     private void Initialize()
     {
-        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().EnableSavedGames().Build();
+        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().RequestServerAuthCode(false).EnableSavedGames().Build();
         PlayGamesPlatform.InitializeInstance(config);
         PlayGamesPlatform.Activate();
         Debug.Log("Play games initilised");
+        SignInPlayer();
     }
 
     private string DetermineId(string ln, string type)
@@ -213,7 +214,7 @@ public class PlayGameServices : MonoBehaviour
     {
         string[] data = savedata.Split('|');
         gm.LoadLevelNumber(Convert.ToInt32(data[0]));
-        Debug.Log("Data " + data[0].ToString());
+        gm.SetNoAds(Convert.ToBoolean(data[1]));
     }
 
     private void SaveUpdate(SavedGameRequestStatus status, ISavedGameMetadata meta)
@@ -228,6 +229,9 @@ public class PlayGameServices : MonoBehaviour
         //data [0]
         data += gm.GetLevelNumber().ToString();
         data += "|";
+        //data [1]
+        data += gm.GetNoAds().ToString();
+        data += "|"; 
 
         return data;
     }

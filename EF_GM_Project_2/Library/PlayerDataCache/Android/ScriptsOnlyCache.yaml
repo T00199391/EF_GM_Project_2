@@ -7,6 +7,7 @@ ScriptsOnlyBuild:
     - ButtonHandler
     - CanvasHandler
     - GameManager
+    - IAPManager
     - LazerHandler
     - LevelHandler
     - MenuHandler
@@ -32,6 +33,8 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
+    UnityEngine.Purchasing.Codeless.dll:
+    - UnityEngine.Purchasing.IAPButton
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -73,31 +76,31 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11996}
     - Class: 114
-      Script: {instanceID: 12028}
+      Script: {instanceID: 12290}
     - Class: 114
-      Script: {instanceID: 12122}
+      Script: {instanceID: 12384}
     - Class: 114
-      Script: {instanceID: 12170}
+      Script: {instanceID: 12428}
     - Class: 114
-      Script: {instanceID: 12398}
+      Script: {instanceID: 12656}
     - Class: 114
-      Script: {instanceID: 12462}
+      Script: {instanceID: 12720}
     - Class: 114
-      Script: {instanceID: 12900}
+      Script: {instanceID: 13142}
     - Class: 114
-      Script: {instanceID: 13060}
+      Script: {instanceID: 13300}
     - Class: 114
-      Script: {instanceID: 13108}
+      Script: {instanceID: 13348}
     - Class: 114
-      Script: {instanceID: 13330}
+      Script: {instanceID: 13564}
     - Class: 114
-      Script: {instanceID: 15030}
+      Script: {instanceID: 15220}
     - Class: 114
-      Script: {instanceID: 15116}
+      Script: {instanceID: 15302}
     - Class: 114
-      Script: {instanceID: 15296}
+      Script: {instanceID: 15476}
     - Class: 114
-      Script: {instanceID: 16074}
+      Script: {instanceID: 16226}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -138,25 +141,25 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11996}
     - Class: 114
-      Script: {instanceID: 12028}
+      Script: {instanceID: 12290}
     - Class: 114
-      Script: {instanceID: 12122}
+      Script: {instanceID: 12384}
     - Class: 114
-      Script: {instanceID: 12398}
+      Script: {instanceID: 12656}
     - Class: 114
-      Script: {instanceID: 12462}
+      Script: {instanceID: 12720}
     - Class: 114
-      Script: {instanceID: 13108}
+      Script: {instanceID: 13348}
     - Class: 114
-      Script: {instanceID: 13330}
+      Script: {instanceID: 13564}
     - Class: 114
-      Script: {instanceID: 13814}
+      Script: {instanceID: 14038}
     - Class: 114
-      Script: {instanceID: 14704}
+      Script: {instanceID: 14896}
     - Class: 114
-      Script: {instanceID: 15296}
+      Script: {instanceID: 15476}
     - Class: 114
-      Script: {instanceID: 16074}
+      Script: {instanceID: 16226}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -186,6 +189,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 49
+      Script: {instanceID: 0}
     - Class: 50
       Script: {instanceID: 0}
     - Class: 58
@@ -207,41 +212,41 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11996}
     - Class: 114
-      Script: {instanceID: 12028}
+      Script: {instanceID: 12290}
     - Class: 114
-      Script: {instanceID: 12122}
+      Script: {instanceID: 12384}
     - Class: 114
-      Script: {instanceID: 12170}
+      Script: {instanceID: 12428}
     - Class: 114
-      Script: {instanceID: 12398}
+      Script: {instanceID: 12656}
     - Class: 114
-      Script: {instanceID: 12462}
+      Script: {instanceID: 12720}
     - Class: 114
-      Script: {instanceID: 12900}
+      Script: {instanceID: 13142}
     - Class: 114
-      Script: {instanceID: 13058}
+      Script: {instanceID: 13298}
     - Class: 114
-      Script: {instanceID: 13108}
+      Script: {instanceID: 13348}
     - Class: 114
-      Script: {instanceID: 13330}
+      Script: {instanceID: 13564}
     - Class: 114
-      Script: {instanceID: 13434}
+      Script: {instanceID: 13668}
     - Class: 114
-      Script: {instanceID: 13814}
+      Script: {instanceID: 14038}
     - Class: 114
-      Script: {instanceID: 14228}
+      Script: {instanceID: 14438}
     - Class: 114
-      Script: {instanceID: 14292}
+      Script: {instanceID: 14496}
     - Class: 114
-      Script: {instanceID: 14414}
+      Script: {instanceID: 14616}
     - Class: 114
-      Script: {instanceID: 14516}
+      Script: {instanceID: 14716}
     - Class: 114
-      Script: {instanceID: 15296}
+      Script: {instanceID: 15476}
     - Class: 114
-      Script: {instanceID: 15868}
+      Script: {instanceID: 16028}
     - Class: 114
-      Script: {instanceID: 16074}
+      Script: {instanceID: 16226}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -251,6 +256,65 @@ ScriptsOnlyBuild:
     - Class: 196
       Script: {instanceID: 0}
     - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/StoreMenu.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 796}
+    - Class: 114
+      Script: {instanceID: 11996}
+    - Class: 114
+      Script: {instanceID: 12290}
+    - Class: 114
+      Script: {instanceID: 12384}
+    - Class: 114
+      Script: {instanceID: 12656}
+    - Class: 114
+      Script: {instanceID: 12720}
+    - Class: 114
+      Script: {instanceID: 13348}
+    - Class: 114
+      Script: {instanceID: 13564}
+    - Class: 114
+      Script: {instanceID: 14038}
+    - Class: 114
+      Script: {instanceID: 15476}
+    - Class: 114
+      Script: {instanceID: 16226}
+    - Class: 114
+      Script: {instanceID: 19492}
+    - Class: 114
+      Script: {instanceID: 26150}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -799,12 +863,6 @@ ScriptsOnlyBuild:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Authentication
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
     namespaceName: GooglePlayGames.OurUtils
     className: PlayGamesHelperObject
   - hash:
@@ -927,9 +985,40 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 30eb564bd7e3b65ae966828be9e631a8
+    assemblyName: UnityEngine.Purchasing.Codeless.dll
+    namespaceName: UnityEngine.Purchasing
+    className: IAPButton
+  - hash:
+      serializedVersion: 2
+      Hash: 06fe0c6f1328047d1063ec79291e7f8a
+    assemblyName: UnityEngine.Purchasing.Codeless.dll
+    namespaceName: UnityEngine.Purchasing
+    className: IAPListener
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.Purchasing.Stores.dll
+    namespaceName: UnityEngine.Purchasing
+    className: AsyncWebUtil
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.Purchasing.Stores.dll
+    namespaceName: UnityEngine.Purchasing.Extension
+    className: UnityUtil
+  - hash:
+      serializedVersion: 2
+      Hash: d991740917ceddc6a78fc2837f89028c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: IAPManager
   platform: 13
   scenePathNames:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/LevelSelect.unity
   - Assets/Scenes/GameScene.unity
-  playerPath: B:/4th_Year/EF_GM_Project_2/EF_GM_Project_2/Builds/Block_Breaker.apk
+  - Assets/Scenes/StoreMenu.unity
+  playerPath: B:/4th_Year/EF_GM_Project_2/EF_GM_Project_2/Builds/Block Breaker.aab

@@ -16,8 +16,7 @@ public class GameManager : MonoBehaviour
     private GameStates currentState = GameStates.NONE;
     private float gameTimer = 0.0f;
     string[] gameUserData;
-    private bool powerUpActive = false;
-    private bool loadData = false;
+    private bool powerUpActive = false, loadData = false, noAds = false;
 
     private void Start()
     {
@@ -147,6 +146,11 @@ public class GameManager : MonoBehaviour
     {
         loadData = true;
     }
+
+    public void SetNoAds(bool var)
+    {
+        noAds = var;
+    }
     #endregion
 
     #region getters
@@ -174,6 +178,11 @@ public class GameManager : MonoBehaviour
     {
         return powerUpActive;
     }
+
+    public bool GetNoAds()
+    {
+        return noAds;
+    }
     #endregion
 
     public void ResetVariables()
@@ -187,7 +196,7 @@ public class GameManager : MonoBehaviour
     public void SaveData()
     {
         services.UploadScore(GetScore(), GetLevelName());
-        //services.AchievementComplete(GetLevelName());
+        services.AchievementComplete(GetLevelName());
         SetLevelNumber();
         if (GetLevelNumber() > PlayerPrefs.GetInt("LevelsComplete"))
         {
