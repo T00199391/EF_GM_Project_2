@@ -15,10 +15,10 @@ ScriptsOnlyBuild:
     - PlayGameServices
     - PowerUpHandler
     - ProjectileHandler
-    - Reporter
-    - ReporterMessageReceiver
     GoogleMobileAds.Editor.dll:
     - GoogleMobileAds.Editor.GoogleMobileAdsSettings
+    GoogleMobileAds.dll:
+    - GoogleMobileAds.Common.MobileAdsEventExecutor
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:
@@ -33,6 +33,9 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
+    UnityEngine.Advertisements.dll:
+    - UnityEngine.Advertisements.Placeholder
+    - UnityEngine.Advertisements.Platform.Editor.BannerPlaceholder
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -70,13 +73,9 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 816}
-    - Class: 114
       Script: {instanceID: 12016}
     - Class: 114
       Script: {instanceID: 12048}
-    - Class: 114
-      Script: {instanceID: 12156}
     - Class: 114
       Script: {instanceID: 12208}
     - Class: 114
@@ -87,8 +86,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 13018}
     - Class: 114
       Script: {instanceID: 13192}
-    - Class: 114
-      Script: {instanceID: 13246}
     - Class: 114
       Script: {instanceID: 13492}
     - Class: 114
@@ -135,19 +132,13 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 816}
-    - Class: 114
       Script: {instanceID: 12016}
     - Class: 114
       Script: {instanceID: 12048}
     - Class: 114
-      Script: {instanceID: 12156}
-    - Class: 114
       Script: {instanceID: 12458}
     - Class: 114
       Script: {instanceID: 12526}
-    - Class: 114
-      Script: {instanceID: 13246}
     - Class: 114
       Script: {instanceID: 13492}
     - Class: 114
@@ -206,13 +197,9 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 816}
-    - Class: 114
       Script: {instanceID: 12016}
     - Class: 114
       Script: {instanceID: 12048}
-    - Class: 114
-      Script: {instanceID: 12156}
     - Class: 114
       Script: {instanceID: 12208}
     - Class: 114
@@ -223,8 +210,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 13018}
     - Class: 114
       Script: {instanceID: 13190}
-    - Class: 114
-      Script: {instanceID: 13246}
     - Class: 114
       Script: {instanceID: 13492}
     - Class: 114
@@ -281,19 +266,13 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 816}
-    - Class: 114
       Script: {instanceID: 12016}
     - Class: 114
       Script: {instanceID: 12048}
     - Class: 114
-      Script: {instanceID: 12156}
-    - Class: 114
       Script: {instanceID: 12458}
     - Class: 114
       Script: {instanceID: 12526}
-    - Class: 114
-      Script: {instanceID: 13246}
     - Class: 114
       Script: {instanceID: 13492}
     - Class: 114

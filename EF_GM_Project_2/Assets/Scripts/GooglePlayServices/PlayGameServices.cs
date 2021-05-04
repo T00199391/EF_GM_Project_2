@@ -24,6 +24,8 @@ public class PlayGameServices : MonoBehaviour
         return currentLevels;
     }
 
+    //Set up all config for the google play services
+    //Call sign in method to authenticate the player
     private void Initialize()
     {
         PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().RequestServerAuthCode(false).EnableSavedGames().Build();
@@ -33,6 +35,7 @@ public class PlayGameServices : MonoBehaviour
         SignInPlayer();
     }
 
+    //Will determine the id for either the leadboard or the achievments
     private string DetermineId(string ln, string type)
     {
         if (type.Equals("Leaderboard"))
@@ -68,6 +71,8 @@ public class PlayGameServices : MonoBehaviour
     }
 
     #region SignIn
+    //Authenticates the player
+    //if sign in successful the the game data for the player will be loaded
     public void SignInPlayer()
     {
         PlayGamesPlatform.Instance.Authenticate(SignInInteractivity.CanPromptOnce, (success) =>
@@ -87,6 +92,7 @@ public class PlayGameServices : MonoBehaviour
     #endregion
 
     #region Leaderboard
+    //Once the game ends this method will be called to see if the leadboard will be updated
     public void UploadScore(int score, string levelName)
     {
         string id = DetermineId(levelName, "Leaderboard");
@@ -111,6 +117,7 @@ public class PlayGameServices : MonoBehaviour
         }
     }
 
+    //Shows the leadboard UI
     public void ShowLeaderboard()
     {
         Social.ShowLeaderboardUI();
@@ -118,6 +125,7 @@ public class PlayGameServices : MonoBehaviour
     #endregion
 
     #region Achievements
+    //Will unlock an achievement is the player successfully complets an objective
     public void AchievementComplete(string levelName)
     {
         string id = DetermineId(levelName, "Achievement");
@@ -156,6 +164,7 @@ public class PlayGameServices : MonoBehaviour
         }
     }
 
+    //Will show the achievement UI
     public void ShowAchievements()
     {
         Social.ShowAchievementsUI();
@@ -166,6 +175,7 @@ public class PlayGameServices : MonoBehaviour
     private bool issaving = false;
     private string SAVE_NAME = "savegames";
 
+    //Determines if the game should load or save player data to the cloud
     public void OpenSaveToCloud(bool saving)
     {
         if (Social.localUser.authenticated)
@@ -181,10 +191,8 @@ public class PlayGameServices : MonoBehaviour
     {
         if (status == SavedGameRequestStatus.Success)
         {
-            // debugtext.text = "hello in save1";
             if (issaving)//if is saving is true we are saving our data to cloud
             {
-                // debugtext.text = "hello in save2";
                 byte[] data = System.Text.ASCIIEncoding.ASCII.GetBytes(GetDataToStoreinCloud());
                 SavedGameMetadataUpdate update = new SavedGameMetadataUpdate.Builder().Build();
                 ((PlayGamesPlatform)Social.Active).SavedGame.CommitUpdate(meta, update, data, SaveUpdate);

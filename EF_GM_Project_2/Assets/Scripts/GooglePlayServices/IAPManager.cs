@@ -10,22 +10,8 @@ public class IAPManager : MonoBehaviour,IStoreListener
     private GameManager gm;
 
     // Product identifiers for all products capable of being purchased: 
-    // "convenience" general identifiers for use with Purchasing, and their store-specific identifier 
-    // counterparts for use with and outside of Unity Purchasing. Define store-specific identifiers 
-    // also on each platform's publisher dashboard (iTunes Connect, Google Play Developer Console, etc.)
-
-    // General product identifiers for the consumable, non-consumable, and subscription products.
-    // Use these handles in the code to reference which product to purchase. Also use these values 
-    // when defining the Product Identifiers on the store. Except, for illustration purposes, the 
-    // kProductIDSubscription - it has custom Apple and Google identifiers. We declare their store-
-    // specific mapping to Unity Purchasing's AddProduct, below.
+    // Set up id for remove ads purchase
     public static string removeAds = "com.t00199391.blockbreaker.removeadverts";
-
-    // Apple App Store-specific product identifier for the subscription product.
-    private static string kProductNameAppleSubscription = "com.unity3d.subscription.new";
-
-    // Google Play Store-specific product identifier subscription product.
-    private static string kProductNameGooglePlaySubscription = "com.unity3d.subscription.original";
 
     void Start()
     {

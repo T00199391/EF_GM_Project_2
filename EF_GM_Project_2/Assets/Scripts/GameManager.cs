@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private int score = 0, levelNumber = 1;
-    private AdManager ads = new AdManager();
+    private AdManager ads;
     private BlockHandler[] blocks;
     private BallHandler ball;
     private PaddleHandler paddle;
@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     private GameStates currentState = GameStates.NONE;
     private float gameTimer = 0.0f;
     string[] gameUserData;
-    private bool powerUpActive = false, loadData = false, noAds = false;
+    private bool powerUpActive = false, loadData = false, noAds = true;
 
     private void Start()
     {
@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
 
         ball = FindObjectOfType<BallHandler>();
         paddle = FindObjectOfType<PaddleHandler>();
+        ads = FindObjectOfType<AdManager>();
 
         if(currentState == GameStates.RUNNING)
             gameTimer += Time.deltaTime;

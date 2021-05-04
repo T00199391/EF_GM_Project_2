@@ -46,6 +46,7 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         // Initialize the Google Mobile Ads SDK.
         MobileAds.Initialize(initStatus => { });
         this.RequestReward();
+        this.RequestInterstitial();
 
         if (!gm.GetNoAds())
         {
@@ -184,10 +185,7 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         // Load the interstitial with the request.
         this.interstitial.LoadAd(request);
 
-        if (this.interstitial.IsLoaded())
-        {
-            this.interstitial.Show();
-        }
+        
     }
     #endregion
 
@@ -200,7 +198,7 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
     {
         if(RandomAd() == 0)
         {
-            DisplayReward();
+            DisplayvideoAd();
         }
         else
         {
@@ -221,7 +219,10 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
             }
             else
             {
-                this.RequestInterstitial();
+                if (this.interstitial.IsLoaded())
+                {
+                    this.interstitial.Show();
+                }
             }
         }
     }
