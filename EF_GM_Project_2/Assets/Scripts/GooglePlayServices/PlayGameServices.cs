@@ -84,11 +84,6 @@ public class PlayGameServices : MonoBehaviour
             }
         });
     }
-
-    public void PlayerSignOut()
-    {
-        PlayGamesPlatform.Instance.SignOut();
-    }
     #endregion
 
     #region Leaderboard

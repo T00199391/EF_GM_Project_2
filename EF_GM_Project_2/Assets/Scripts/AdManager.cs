@@ -47,26 +47,29 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         MobileAds.Initialize(initStatus => { });
         this.RequestReward();
 
-        //Show banner
-        if (RandomAd() == 0)
+        if (!gm.GetNoAds())
         {
-            if (ibanner)
+            //Show banner
+            if (RandomAd() == 0)
             {
-                this.interstitial.Destroy();
-                ibanner = false;
+                if (ibanner)
+                {
+                    this.interstitial.Destroy();
+                    ibanner = false;
+                }
+                StartCoroutine(ShowBannerWhenReady());
+                ubanner = true;
             }
-            StartCoroutine(ShowBannerWhenReady());
-            ubanner = true;
-        }
-        else
-        {
-            if (ubanner)
+            else
             {
-                Advertisement.Banner.Hide(true);
-                ubanner = false;
+                if (ubanner)
+                {
+                    Advertisement.Banner.Hide(true);
+                    ubanner = false;
+                }
+                this.RequestBanner();
+                ibanner = true;
             }
-            this.RequestBanner();
-            ibanner = true;
         }
     }
 
